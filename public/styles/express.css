@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+body {
+  background-color: #00C9FF;
+  background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);
+  background: linear-gradient(to right, #92FE9D, #00C9FF); 
+}
+.contenedor {
+  width: 90%;
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 8px;
+}
+h2 {
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #CCC;
+}
+h3 {
+    color: #505050;
+  }
+form {
+  padding-top: 1rem;
+}
+form ul {
+  list-style: none;
+}
+input, output, button {
+  /* Para que el texto sea más pequeño */
+  font-size: .9rem;
+  /* Para que el texto no quede tan pegado al borde del input */
+  padding: .3rem;
+}
+/* Botones */
+button {
+  background: #026aa7;
+  box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.2);
+  padding: .5rem 1rem;
+  color: #DDD;
+  outline: none;
+  border: none;
+  cursor: pointer;
+} 
+button:hover {
+  box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.6), 0 0 8px 0 rgba(0, 0, 0, 0.5);
+}
+button:active {
+  box-shadow: inset 0 3px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Cuando un input no válido recibe el foco se muestra una sombra roja */
+:invalid:focus {
+  box-shadow: 0 0 5px red;
+  outline: none;
+}
+/* Fila del formulario */
+.fila {
+  margin-bottom: 2rem;
+  /* Caja flexible con hijos formando filas */
+  display: flex;
+  flex-wrap: wrap;
+  /* Para que en cada fila se alinee verticalmente al centro */
+  align-items: center;
+  /* Para poder posicionar los mensajes de error de forma absoluta respecto a la fila */
+  position: relative;
+}
+/* Labels de propiedades */
+.propiedad {
+  /* Para que esté centrado horizontalmente dentro de la fila hacemos que su ancho mínimo sea el 50% y alineamos su texto a la derecha */
+  min-width: 50%;
+  text-align: right;
+  padding-right: 1rem;
+  /* Para que el label se sitúe antes de los input le damos un orden menor de 0 */
+  order: -1;
+}
+/* El label de propiedad cuyo campo tiene el foco o está activado */
+:focus ~ .propiedad,
+:active ~ .propiedad {
+  font-weight: bold;
+}
+/* La propiedad cuyo campo tiene el foco o está activado y no es válido */
+.fila :invalid:focus ~ .propiedad,
+.fila :invalid:active ~ .propiedad {
+  color: red;
+}
+/* La fila de botones */
+.botonera {
+  /* Centrados en una fila */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+/* Las propiedades de campos válidos con validación que no estén vacíos deben mostrar un icono de aceptación antes */ 
+:required:valid:not(:placeholder-shown) ~ .propiedad:before,
+input[type="email"]:valid:not(:placeholder-shown) ~ .propiedad:before,
+input[type="url"]:valid:not(:placeholder-shown) ~ .propiedad:before,
+input[type="tel"]:valid:not(:placeholder-shown) ~ .propiedad:before {
+  content: "\2713";
+  color: teal;
+  vertical-align: middle;
+  display: inline;
+  padding-right: .5rem;
+}
+/* Las propiedades de campos inválidos deben mostrar un icono de error antes */ 
+:invalid ~ .propiedad:before {
+  content: "\26A0";
+  color: red;
+  vertical-align: middle;
+  display: inline;
+  padding-right: .5rem;
+}
+/* Las propiedades de campos inválidos deben mostrar un mensaje de valor incorrecto debajo del campo. */
+:invalid ~ .propiedad:after {
+  content: "Valor incorrecto";
+  color: red;
+  font-size: .8rem;
+  /* Se posiciona de forma absoluta respecto a la fila para colocarlo debajo de input */
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  text-align: left;
+}
+/* Mensaje de error para los campos obligatorios */
+:required:invalid ~ .propiedad:after {
+  content:"Campo obligatorio";
+}
+/* Mensaje de error para email no válido */
+input[type="email"]:invalid ~ .propiedad:after {
+  content:"El email debe llevar @ y .";
+}
+/* Mensaje de error para teléfono no válido */
+input[type="tel"]:invalid ~ .propiedad:after {
+  content:"El teléfono debe ser numérico, contener  9 dígitos y comenzar por 6, 7, 8 o 9";
+}
+/* Si hay más de un elemento en la fila se deja
+un margen a la izquierda (menos en la propiedad) */
+.fila > *:not(.propiedad) {
+    margin-right: 1rem; 
+  }
+li {
+list-style-type: none;
+display: inline-block;
+margin: 10px;
+}  
+.std {
+border: 8px ridge sienna;
+box-shadow: 5px 5px 10px #000;
+height: 390px;
+transition: all 2s linear;
+}
+.std:hover {
+filter: sepia(1);
+transition: all 10s linear;
+}

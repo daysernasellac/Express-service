@@ -1,0 +1,36 @@
+html
+    head
+        title Registro
+        link(rel='stylesheet', href='/styles/express.css')
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+    body
+        div(class="contenedor")
+            h2 Perfil de usuario
+
+            form#formulario(action="/registro", method='POST')
+                ul
+                li.fila
+                    input#nombre(type='text' name='fullname' maxlength='30' size='30' required='required' autofocus='autofocus' autocomplete="off")
+                    label.propiedad(for='nombre') Nombres
+                    input#codigo(type='hidden' name='code' value='25')
+                li.fila
+                    input#password(type='text' name='apellidos' size='30' required='required' autocomplete="off")
+                    label.propiedad(for='apellidos') Apellidos
+                li.fila
+                    input#email(type='email' name='email' maxlength='30' size='30')
+                    label.propiedad(for='email') Email
+                li.fila
+                    input#telefono(type='tel' name='phonenumber' maxlength='9' size='11' pattern='[0-9]{9}' autocomplete="off")
+                    label.propiedad(for='telefono') Tel&eacute;fono
+                li.fila
+                    input#fecha(type='date' name='birthdate')
+                    label.propiedad(for='fecha') Fecha de nacimiento
+                li.fila
+                    input#hombre(type='radio' name='genre' value='hombre')
+                    label.de-radio(for='hombre') Hombre
+                    input#mujer(type='radio' name='genre' value='mujer' checked='checked')
+                    label.de-radio(for='mujer') Mujer
+                    label.propiedad(for='genero') G&eacute;nero               
+                li.fila.botonera
+                    button(type='submit') Aceptar
+                    button(type='reset') Reiniciar
