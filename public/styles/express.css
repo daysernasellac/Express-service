@@ -157,9 +157,9 @@ margin: 10px;
 border: 8px ridge sienna;
 box-shadow: 5px 5px 10px #000;
 height: 390px;
-transition: all 2s linear;
+transition: all 0s linear;
 }
 .std:hover {
 filter: sepia(1);
-transition: all 10s linear;
+transition: all 0s linear;
 }

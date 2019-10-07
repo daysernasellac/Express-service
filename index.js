@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
 const pug = require("pug")
+const config = require("./config")
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -31,7 +32,6 @@ app.get('/consulta', function(req, res){
 });
 
 app.post('/registro', function(req, res){
-    console.log(req.body)
     res.render('consulta', {
         nombre: req.body.fullname,
         apellido: req.body.apellidos,
@@ -43,7 +43,6 @@ app.post('/registro', function(req, res){
     });
 });
 
-app.listen(5050, function(){
+app.listen(config.puerto, function(){
     console.log("start")
-})
-
+});
